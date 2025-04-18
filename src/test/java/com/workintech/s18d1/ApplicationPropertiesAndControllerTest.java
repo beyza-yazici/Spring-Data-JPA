@@ -7,6 +7,7 @@ import com.workintech.s18d1.entity.BreadType;
 import com.workintech.s18d1.entity.Burger;
 import com.workintech.s18d1.exceptions.BurgerException;
 import com.workintech.s18d1.exceptions.GlobalExceptionHandler;
+import com.workintech.s18d1.util.BurgerValidation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 
-@WebMvcTest(controllers = {BurgerController.class, GlobalExceptionHandler.class,ApplicationPropertiesAndControllerTest.class})
+@WebMvcTest(controllers = {BurgerController.class, GlobalExceptionHandler.class,ApplicationPropertiesAndControllerTest.class,BurgerController.class})
 @ExtendWith(ResultAnalyzer.class)
 class ApplicationPropertiesAndControllerTest {
 
@@ -46,6 +47,9 @@ class ApplicationPropertiesAndControllerTest {
 
     @MockBean
     private BurgerDao burgerDao;
+
+    @MockBean
+    private BurgerValidation burgerValidation;
 
     private Burger sampleBurger;
 
